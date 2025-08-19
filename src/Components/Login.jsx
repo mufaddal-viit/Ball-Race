@@ -4,7 +4,6 @@ import { useAuth } from "./auth";
 function Login() {
   const [username, setusername] = useState("");
   const { user, Login, Logout } = useAuth();
-  //   console.log(user);
 
   const handleLogin = () => {
     if (username.trim()) {
@@ -13,40 +12,28 @@ function Login() {
     }
   };
 
-  const handleLogout = () => {
-    Logout();
-  };
-
   return (
     <>
-      {user ? (
-        <div className="p-2">
-          {/* <p>
-            ✅ Logged in as: <strong>{String(user).toLocaleUpperCase()}</strong>
-          </p>
-          <button
-            onClick={handleLogout}
-            className=" mt-2 bg-gray-500 text-center px-4 py-2 text-2xl font-bold rounded hover:bg-rose-300 border-2 border-rose-600"
-          >
-            Logout
-          </button> */}
-        </div>
-      ) : (
-        <div className="flex justify-center items-center flex-col rounded-2xl space-y-5 border-2 p-3  w-xl m-auto">
-          <h2 className="font-bold text-3xl group">Login Here</h2>
-          <input
-            type="text"
-            placeholder="Enter your username"
-            className=" px-2 py-1 border rounded-2xl text-center"
-            onChange={(e) => setusername(e.target.value)}
-          />
-          <button
-            onClick={handleLogin}
-            className="border text-center px-2 py-0.5 text-2xl font-bold rounded hover:bg-purple-300 transition-all duration-300 "
-          >
-            {" "}
-            Login{" "}
-          </button>
+      {!user && (
+        <div className="flex justify-center items-center min-h-screen px-4">
+          <div className="flex flex-col w-full max-w-sm bg-white border rounded-2xl shadow-md space-y-5 p-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-center">
+              Login Here
+            </h2>
+            <input
+              type="text"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(e) => setusername(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-center text-sm md:text-base"
+            />
+            <button
+              onClick={handleLogin}
+              className="w-full bg-purple-600 text-white font-semibold py-2 rounded-md hover:bg-purple-700 transition-all duration-300 text-sm md:text-base"
+            >
+              Login
+            </button>
+          </div>
         </div>
       )}
     </>

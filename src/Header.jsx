@@ -27,32 +27,34 @@ function Header() {
 
   return (
     <header
-      className={`bg-gradient-to-r ${headerBg} shadow-md rounded-3xl my-4 mx-6 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-500`}
+      className={`bg-gradient-to-r ${headerBg} shadow-md rounded-3xl my-4 mx-4 px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-500`}
     >
       {/* Game Title */}
-      <div>
+      <div className="text-center sm:text-left">
         <h1
-          className={`text-2xl md:text-3xl font-extrabold ${titleColor} tracking-wide flex items-center gap-2`}
+          className={`text-xl sm:text-2xl md:text-3xl font-extrabold ${titleColor} tracking-wide flex items-center justify-center sm:justify-start gap-2`}
         >
           🏀 Ball
-          <span className={`${raceColor}`}>Race</span>
+          <span className={raceColor}>Race</span>
           <span className="inline-block animate-bounce mx-1">🏀</span>
         </h1>
-        <p className={`text-xl font-bold ${subTitleColor}`}>
+        <p
+          className={`text-sm sm:text-base md:text-lg font-bold ${subTitleColor}`}
+        >
           - Click me to get Points
         </p>
       </div>
 
       {/* User Info + Logout */}
       {user && (
-        <div className={`text-right ${textColor}`}>
-          <p>
+        <div className={`text-center sm:text-right ${textColor}`}>
+          <p className="text-sm sm:text-base">
             ✅ Logged in as:{" "}
             <strong className="uppercase">{String(user)}</strong>
           </p>
           <button
             onClick={handleLogout}
-            className={`mt-1 border border-gray-500 text-center px-4 py-1 text-base font-semibold rounded ${hoverBg} transition-all duration-300`}
+            className={`mt-1 border border-gray-500 text-center px-4 py-1 text-sm sm:text-base font-semibold rounded ${hoverBg} transition-all duration-300`}
           >
             Logout
           </button>
@@ -62,7 +64,7 @@ function Header() {
       {/* Theme Toggle Button */}
       <button
         onClick={toggleTheme}
-        className={`text-3xl ${iconColor} hover:scale-110 transition-transform`}
+        className={`text-2xl sm:text-3xl ${iconColor} hover:scale-110 transition-transform`}
         title="Toggle Theme"
       >
         {theme === "dark" ? <MdOutlineLightMode /> : <MdDarkMode />}
