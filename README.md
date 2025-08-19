@@ -62,3 +62,22 @@ Handled via `ThemeContext`:
 - Color palette and UI adjust instantly based on theme
 
 ---
+🚧 Roadmap - Version 2 (In Progress)
+
+The next version of Ball Race will introduce multiplayer support with real-time features!
+
+Planned Features:
+
+🧑‍🤝‍🧑 Multiple users can join and play together
+
+🔄 Live score updates with Socket.IO
+
+📡 Backend server with Node.js & Express
+
+💬 Optional in-game chat
+
+🎯 Real-time leaderboard
+
+
+
+#thank you :)
