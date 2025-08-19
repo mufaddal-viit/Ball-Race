@@ -1,6 +1,6 @@
 # 🏀 Ball Race - React Game App (v1)
 
-**Ball Race** is a fun and interactive single-player game built using **React** where users compete with themselves by clicking a bouncing ball inside a container. It focuses on core React concepts like Context API, Hooks, reusable components, and theme toggling using a custom theme context.
+**Ball Race** is a fun and interactive single-player game built using **React** where users compete with themselves by clicking a random ball inside a container. It focuses on core React concepts like Context API, Hooks, reusable components, and theme toggling using a custom theme context.
 
 > ⚠️ This is **Version 1**. Multi-user support is coming in **Version 2** (see roadmap below).
 
@@ -8,13 +8,8 @@
 
 ## 🔗 Live Demo
 
-(Coming soon — add your deployed link here)
+https://ball-race.netlify.app/
 
----
-
-## 📸 Preview
-
-> _(Add screenshots or gameplay gif here if you have one)_
 
 ---
 
@@ -37,7 +32,6 @@
 ## 🎮 Game Features
 
 - 🧍‍♂️ **Username-based login**
-- 🏀 **Animated bouncing ball**
 - 🎯 **Click detection to increase score**
 - 🔁 **Restart button** (saves previous round’s score)
 - 🚀 **Difficulty toggle** (increases ball speed)
@@ -49,7 +43,7 @@
 
 ## 🔐 Authentication
 
-A basic login system is implemented using `AuthContext`:
+A login system is implemented using `AuthContext`:
 
 - Users enter a **username** to start playing.
 - The username is stored in `localStorage`, so session remains across refreshes.
@@ -68,5 +62,22 @@ Handled via `ThemeContext`:
 - Color palette and UI adjust instantly based on theme
 
 ---
+🚧 Roadmap - Version 2 (In Progress)
 
-## 🗂️ Project Structure
+The next version of Ball Race will introduce multiplayer support with real-time features!
+
+Planned Features:
+
+🧑‍🤝‍🧑 Multiple users can join and play together
+
+🔄 Live score updates with Socket.IO
+
+📡 Backend server with Node.js & Express
+
+💬 Optional in-game chat
+
+🎯 Real-time leaderboard
+
+
+
+#thank you :)
