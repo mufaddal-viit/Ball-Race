@@ -10,7 +10,6 @@
 
 https://ball-race.netlify.app/
 
-
 ---
 
 ## 🧠 Technologies & Concepts Used
@@ -62,6 +61,7 @@ Handled via `ThemeContext`:
 - Color palette and UI adjust instantly based on theme
 
 ---
+
 🚧 Roadmap - Version 2 (In Progress)
 
 The next version of Ball Race will introduce multiplayer support with real-time features!
@@ -78,6 +78,4 @@ Planned Features:
 
 🎯 Real-time leaderboard
 
-
-
-#thank you :)
+#thank you :))
