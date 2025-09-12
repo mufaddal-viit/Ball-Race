@@ -23,7 +23,7 @@ function Login() {
   return (
     <>
       {!user && (
-        <div className="flex justify-center items-center min-h-screen px-4 bg-gray-50">
+        <div className="flex justify-center items-center min-h-screen px-4 ">
           <form
             onSubmit={handleLogin}
             className="flex flex-col w-full max-w-sm bg-white border rounded-2xl shadow-md space-y-5 p-6"
