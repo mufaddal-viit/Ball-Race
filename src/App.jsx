@@ -11,13 +11,6 @@ import { Provider } from "react-redux";
 function AppContent() {
   const { user } = useAuth();
   const { theme, toggleTheme } = useTheme();
-  let a = [2];
-  a.forEach((x) => {
-    x += 2;
-    console.log(x);
-    x -= 2;
-    console.log(x);
-  });
 
   return (
     <div
