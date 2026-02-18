@@ -1,4 +1,3 @@
-import Login from "./Components/Login";
 import { useAuth } from "./Components/auth";
 import { useTheme } from "./Components/Context";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";

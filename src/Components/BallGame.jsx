@@ -12,10 +12,10 @@ export default function BallGame() {
   const boxRef = useRef(null);
   const { user } = useAuth();
   const [difficult, setDifficult] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const isLight = theme === "light";
 
-  let [scoreList, setScorelist] = useState([]);
+  const [scoreList, setScoreList] = useState([]);
 
   const handledifficult = () => {
     setDifficult((prev) => !prev);
@@ -50,7 +50,7 @@ export default function BallGame() {
   };
   const handlereset = () => {
     const marks = `${count}/${total}`;
-    setScorelist((prev) => [...prev, marks]);
+    setScoreList((prev) => [...prev, marks]);
     setCount(0);
     setTotal(0);
   };
@@ -78,6 +78,7 @@ export default function BallGame() {
             <ul className=" rounded-lg overflow-y-auto max-h-70 pr-4">
               {scoreList.map((s, i) => (
                 <li
+                  key={`${i}-${s}`}
                   className={`px-4 py-3 transition mb-1 rounded ${
                     isLight
                       ? "bg-white hover:bg-gray-50 text-gray-800"
