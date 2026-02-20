@@ -35,13 +35,13 @@ export function LoginPanel() {
   };
 
   return (
-    <section className="mt-6 grid gap-5 lg:grid-cols-[1fr_1.1fr]">
-      <Card className="relative overflow-hidden border-cyan-200/20">
+    <section className="mt-4 grid gap-4 sm:mt-6 sm:gap-5 xl:grid-cols-[1fr_1.05fr]">
+      <Card className="relative overflow-hidden border-cyan-400/25">
         <CardHeader className="pb-2">
           <Badge variant="warm" className="w-fit">
             Live Portfolio Build
           </Badge>
-          <CardTitle className="mt-2 text-2xl text-hero-gradient">
+          <CardTitle className="mt-2 text-xl text-hero-gradient sm:text-2xl">
             Launch Into Ball Race
           </CardTitle>
           <CardDescription>
@@ -50,7 +50,7 @@ export function LoginPanel() {
         </CardHeader>
         <CardContent className="space-y-4">
           <form className="space-y-3" onSubmit={handleSubmit}>
-            <label className="text-sm font-medium text-slate-100" htmlFor="username">
+            <label className="text-sm font-medium text-[var(--text-main)]" htmlFor="username">
               Username
             </label>
             <Input
@@ -65,7 +65,7 @@ export function LoginPanel() {
             />
 
             {(error || loginMutation.error) && (
-              <p className="rounded-lg border border-red-400/40 bg-red-500/15 px-3 py-2 text-sm text-red-200">
+              <p className="rounded-lg border border-red-400/40 bg-red-500/15 px-3 py-2 text-sm text-red-300">
                 {error || loginMutation.error?.message}
               </p>
             )}
@@ -76,7 +76,7 @@ export function LoginPanel() {
             </Button>
           </form>
 
-          <div className="rounded-xl border border-white/15 bg-black/20 p-3 text-sm text-slate-200">
+          <div className="rounded-xl border border-[var(--border-soft)] bg-[var(--surface-soft)] p-3 text-sm text-[var(--text-main)]">
             <div className="mb-1 flex items-center gap-2 font-semibold">
               <Sparkles className="h-4 w-4 text-cyan-300" />
               Daily Pro Tip
@@ -91,7 +91,7 @@ export function LoginPanel() {
           <img
             src={arenaHero}
             alt="Arcade arena illustration"
-            className="h-full min-h-[340px] w-full object-cover"
+            className="h-52 w-full object-cover sm:h-64 md:h-72 xl:h-full xl:min-h-[360px]"
           />
         </CardContent>
       </Card>

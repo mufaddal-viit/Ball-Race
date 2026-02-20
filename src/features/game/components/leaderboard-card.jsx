@@ -16,7 +16,7 @@ function LeaderboardCard() {
   return (
     <div className="space-y-2">
       {leaderboardQuery.isLoading && (
-        <p className="text-sm text-slate-300">Loading leaderboard...</p>
+        <p className="text-sm text-[var(--text-muted)]">Loading leaderboard...</p>
       )}
 
       {leaderboardQuery.data && (
@@ -28,19 +28,19 @@ function LeaderboardCard() {
         >
           <AccordionItem
             value="leaderboard"
-            className="overflow-hidden rounded-xl border border-white/10 bg-black/20"
+            className="overflow-hidden rounded-xl border border-[var(--border-soft)] bg-[var(--surface-soft)]"
           >
-            <AccordionTrigger className="px-4 py-3 hover:no-underline">
-              <div className="flex w-full items-center justify-between gap-4">
+            <AccordionTrigger className="px-3 py-3 hover:no-underline sm:px-4">
+              <div className="flex w-full flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-2">
                   <Trophy className="h-4 w-4 text-amber-200" />
-                  <span className="text-sm font-semibold text-slate-100">
+                  <span className="text-sm font-semibold text-[var(--text-main)]">
                     Arena Leaderboard
                   </span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex min-w-0 items-center gap-2 sm:gap-3">
                   <Crown className="h-4 w-4 text-amber-300" />
-                  <span className="text-xs font-semibold text-slate-200">
+                  <span className="max-w-[12rem] truncate text-xs font-semibold text-[var(--text-muted)] sm:max-w-[16rem]">
                     {topPlayer
                       ? `#1 ${topPlayer.username} ( ${topPlayer.score} )`
                       : "No Leader Yet"}
@@ -49,21 +49,21 @@ function LeaderboardCard() {
               </div>
             </AccordionTrigger>
             <AccordionContent className="px-4 pb-4 pt-1">
-              <div className="space-y-2 border-t border-white/10 pt-3">
+              <div className="space-y-2 border-t border-[var(--border-soft)] pt-3">
                 {leaderboardQuery.data.map((player, index) => (
                   <div
                     key={player.id}
-                    className="flex items-center justify-between rounded-lg border border-white/10 bg-black/30 px-3 py-2"
+                    className="flex items-center justify-between gap-2 rounded-lg border border-[var(--border-soft)] bg-[var(--surface-inset)] px-3 py-2"
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/25 bg-white/10 text-xs font-bold">
+                    <div className="flex min-w-0 items-center gap-2">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--border-soft)] bg-[var(--surface-soft)] text-xs font-bold text-[var(--text-main)]">
                         {index + 1}
                       </span>
-                      <div>
-                        <p className="text-sm font-semibold text-slate-100">
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold text-[var(--text-main)]">
                           {player.username}
                         </p>
-                        <p className="text-xs text-slate-400">Streak {player.streak}</p>
+                        <p className="text-xs text-[var(--text-subtle)]">Streak {player.streak}</p>
                       </div>
                     </div>
                     <Badge variant={index <= 1 ? "warm" : "neutral"}>

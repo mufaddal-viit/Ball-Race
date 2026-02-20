@@ -5,12 +5,12 @@ import { Button } from "../../Components/ui/button";
 import { Card, CardContent } from "../../Components/ui/card";
 import { Separator } from "../../Components/ui/separator";
 import { useAuth } from "../../contexts/auth-context";
-import { useBallRace } from "./hooks/use-ball-race";
-import { useGameConfigQuery } from "./queries/use-game-config-query";
+import { cn } from "../../lib/utils";
 import { GameStage } from "./components/game-stage";
 import { LeaderboardCard } from "./components/leaderboard-card";
 import { ScoreHistory } from "./components/score-history";
-import { cn } from "../../lib/utils";
+import { useBallRace } from "./hooks/use-ball-race";
+import { useGameConfigQuery } from "./queries/use-game-config-query";
 
 function GameScreen() {
   const { user } = useAuth();
@@ -32,43 +32,39 @@ function GameScreen() {
   const activeEvent = gameConfigQuery.data?.activeEvent ?? "Loading event...";
 
   return (
-    <section className="relative mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-      {/* Optional subtle background overlay for depth – can be global too */}
+    <section className="relative mt-4 grid gap-4 sm:mt-6 sm:gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-violet-950/10 via-cyan-950/5 to-transparent" />
 
-      {/* Main content */}
-      <div className="space-y-6">
-        {/* Player Card – more premium with gradient accents */}
-        <Card className="overflow-hidden border border-cyan-500/15 bg-gradient-to-b from-slate-950/80 to-black/90 backdrop-blur-xl shadow-2xl">
-          <CardContent className="relative p-6">
-            {/* Subtle glow orb */}
+      <div className="min-w-0 space-y-4 sm:space-y-6">
+        <Card className="overflow-hidden border border-[var(--border-accent)] bg-[var(--surface-strong)] shadow-2xl backdrop-blur-xl">
+          <CardContent className="relative p-4 sm:p-6">
             <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
 
-            <div className="relative flex flex-wrap items-center justify-between gap-4">
-              <div>
+            <div className="relative flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+              <div className="min-w-0">
                 <p className="text-xs uppercase tracking-widest text-cyan-300/70">
                   Active Player
                 </p>
-                <h5 className="mt-1 bg-gradient-to-r from-cyan-300 via-blue-200 to-violet-300 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent">
+                <h5 className="mt-1 truncate bg-gradient-to-r from-cyan-300 via-blue-200 to-violet-300 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
                   {user.username}
                 </h5>
-                <p className="mt-0.5 text-sm font-medium text-violet-200/90">
+                <p className="mt-0.5 text-sm font-medium text-[var(--text-muted)]">
                   {user.rankTitle || "Rising Star"}
                 </p>
               </div>
 
-              <Badge className="border border-violet-400/30 bg-violet-950/50 px-4 py-1.5 text-violet-200 backdrop-blur-sm hover:bg-violet-950/70">
+              <Badge className="max-w-full px-3 py-1 text-xs backdrop-blur-sm sm:px-4 sm:py-1.5 sm:text-sm">
                 <Sparkles className="mr-1.5 h-4 w-4 text-violet-300" />
                 {activeEvent}
               </Badge>
             </div>
 
-            <Separator className="my-5 bg-white/5" />
+            <Separator className="my-4 bg-white/5 sm:my-5" />
 
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-wrap sm:gap-3">
               <Button
-                variant="outline"
-                className="border-cyan-500/30 bg-cyan-950/30 text-cyan-200 hover:bg-cyan-900/40 hover:text-cyan-100"
+                variant="secondary"
+                className="w-full border-cyan-500/30 sm:w-auto"
                 onClick={restartRound}
               >
                 <RefreshCcw className="mr-2 h-4 w-4" />
@@ -76,12 +72,12 @@ function GameScreen() {
               </Button>
 
               <Button
-                variant="outline"
+                variant={hardMode ? "danger" : "ghost"}
                 className={cn(
-                  "border-purple-500/40 text-purple-200 transition-all",
+                  "w-full border-purple-500/40 transition-all sm:w-auto",
                   hardMode
-                    ? "bg-gradient-to-r from-red-950/50 to-purple-950/50 hover:from-red-900/60 hover:to-purple-900/60 hover:text-red-200"
-                    : "bg-purple-950/30 hover:bg-purple-900/50 hover:text-purple-100"
+                    ? "bg-gradient-to-r from-red-950/50 to-purple-950/50 text-red-200 hover:from-red-900/60 hover:to-purple-900/60"
+                    : "bg-[var(--surface-soft)] text-[var(--text-main)] hover:bg-[var(--surface-inset)]"
                 )}
                 onClick={toggleMode}
               >
@@ -92,8 +88,7 @@ function GameScreen() {
           </CardContent>
         </Card>
 
-        {/* Game Stage – assume it handles its own styling, but wrap for consistency */}
-        <div className="overflow-hidden rounded-3xl border border-cyan-500/10 bg-black/60 backdrop-blur-md shadow-inner">
+        <div className="overflow-hidden rounded-3xl border border-[var(--border-soft)] bg-[var(--surface-soft)] shadow-inner backdrop-blur-md">
           <GameStage
             stageRef={stageRef}
             position={position}
@@ -104,15 +99,13 @@ function GameScreen() {
         </div>
       </div>
 
-      {/* Sidebar */}
-      <div className="space-y-6">
+      <div className="min-w-0 space-y-4 sm:space-y-6">
         <ScoreHistory
           hits={hits}
           attempts={attempts}
           accuracy={accuracy}
           history={history}
         />
-
         <LeaderboardCard />
       </div>
     </section>

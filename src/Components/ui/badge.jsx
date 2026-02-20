@@ -8,9 +8,12 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "border-cyan-300/40 bg-cyan-400/15 text-cyan-100",
-        warm: "border-amber-300/40 bg-amber-400/15 text-amber-100",
-        neutral: "border-white/20 bg-white/10 text-slate-100",
+        default:
+          "border-[var(--badge-cyan-border)] bg-[var(--badge-cyan-bg)] text-[var(--badge-cyan-text)]",
+        warm:
+          "border-[var(--badge-warm-border)] bg-[var(--badge-warm-bg)] text-[var(--badge-warm-text)]",
+        neutral:
+          "border-[var(--badge-neutral-border)] bg-[var(--badge-neutral-bg)] text-[var(--badge-neutral-text)]",
       },
     },
     defaultVariants: {

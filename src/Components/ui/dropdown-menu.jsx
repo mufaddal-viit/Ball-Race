@@ -32,10 +32,10 @@ DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayNam
 const DropdownMenuSubContent = React.forwardRef(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.SubContent
     ref={ref}
-    className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border border-white/15 bg-slate-950/95 p-1 text-slate-100 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      className
-    )}
+      className={cn(
+        "z-50 min-w-[8rem] overflow-hidden rounded-md border border-[var(--border-soft)] bg-[var(--surface-strong)] p-1 text-[var(--text-main)] shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        className
+      )}
     {...props}
   />
 ));
@@ -48,7 +48,7 @@ const DropdownMenuContent = React.forwardRef(
         ref={ref}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[13rem] overflow-hidden rounded-xl border border-white/15 bg-slate-950/95 p-1 text-slate-100 shadow-[0_16px_40px_-16px_rgba(2,8,23,0.9)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+          "z-50 min-w-[13rem] overflow-hidden rounded-xl border border-[var(--border-soft)] bg-[var(--surface-strong)] p-1 text-[var(--text-main)] shadow-[0_16px_40px_-16px_rgba(2,8,23,0.9)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           className
         )}
         {...props}
@@ -140,7 +140,7 @@ DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 const DropdownMenuShortcut = ({ className, ...props }) => {
   return (
     <span
-      className={cn("ml-auto text-xs tracking-widest text-slate-400", className)}
+      className={cn("ml-auto text-xs tracking-widest text-[var(--text-subtle)]", className)}
       {...props}
     />
   );
