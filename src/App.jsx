@@ -1,34 +1,27 @@
-import BallGame from "./Components/BallGame";
-import { AuthProvider, useAuth } from "./Components/auth";
-import Login from "./Components/Login";
-import { ThemeProvider, useTheme } from "./Components/Context";
-import Header from "./Header";
+import { AppProviders } from "./app/providers";
+import { AppShell } from "./Components/layout/app-shell";
+import { GameHeader } from "./Components/layout/game-header";
+import { useAuth } from "./contexts/auth-context";
+import { LoginPanel } from "./features/auth/components/login-panel";
+import { GameScreen } from "./features/game/game-screen";
 
 function AppContent() {
-  const { user } = useAuth();
-  const { theme } = useTheme();
+  const { isAuthenticated } = useAuth();
 
   return (
-    <div
-      className={`min-h-screen ${
-        theme === "light"
-          ? "bg-gradient-to-t from-blue-200 via-indigo-300 to-purple-400"
-          : "bg-gray-700"
-      } px-2 py-0.5`}
-    >
-      <Header />
-      <Login />
-      {user && <BallGame />}
-    </div>
+    <AppShell>
+      <GameHeader />
+      {isAuthenticated ? <GameScreen /> : <LoginPanel />}
+    </AppShell>
   );
 }
+
 function App() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <AppContent />
-      </AuthProvider>
-    </ThemeProvider>
+    <AppProviders>
+      <AppContent />
+    </AppProviders>
   );
 }
+
 export default App;
